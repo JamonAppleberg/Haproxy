@@ -1,0 +1,13 @@
+listen web
+  bind *:80
+   balance  roundrobin #static-rr leastconn first source uri 
+   server  back1 back1:80 check
+   server  back2 back2:80 check
+-----------------------------------------------------------------------
+frontend my-web
+        bind *:80
+        default_backend my-web
+backend my-web
+    balance roundrobin #static-rr  leastconn  first  source  uri  url_param  hdr  rdp-cookie
+        server back1  back1:80 check
+        server back2  back2:80 check

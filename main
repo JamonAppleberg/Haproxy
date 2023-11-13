@@ -1,6 +1,6 @@
 listen web
   bind *:80
-   balance  roundrobin #static-rr leastconn first source uri 
+   balance  roundrobin 
    server  back1 back1:80 check
    server  back2 back2:80 check
 -----------------------------------------------------------------------
